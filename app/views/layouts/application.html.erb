@@ -11,6 +11,12 @@
   <p class="notice"><%= notice %></p>
   <p class="alert"><%= alert %></p>
 
+  <% if current_user %>
+    Logged in As <%= current_user.email %>
+  <% else %>
+    Please login
+  <% end %>
+
   <%= yield %>
 
 </body>
