@@ -1,29 +1,24 @@
-<h2>Sign up</h2>
+<div id="registerModal" >
+  <div class="modal-dialog">
+    <div class="modal-content">
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= devise_error_messages! %>
+      <div class="modal-header">
+        <h2>Register Here</h2>
+      </div>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true %>
+      <div class="modal-body">
+        <%= form_for(resource, as: resource_name, url: registration_path(resource_name), class: "form col-md-12") do |f| %>
+          <%= devise_error_messages! %>
+
+          <input type="email" name="user[email]" class="form-control input-lg" placeholder="Email" required autofocus /> <br/>
+
+          <input type="password" name="user[password]" class="form-control input-lg" placeholder="Password" required /> <br/>
+          <input type="password" name="user[password_confirmation]" class="form-control input-lg" placeholder="Retype Password" required /> <br/>
+
+          <button type="submit" class="btn btn-info btn-lg btn-block">Register</button>
+        <% end %>
+      </div>
+
+    </div>
   </div>
-
-  <div class="field">
-    <%= f.label :password %>
-    <% if @validatable %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "off" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "off" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Sign up" %>
-  </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+</div>
