@@ -1,1 +1,10 @@
-<h1>Project...</h1>
+<h1>Coding Tweets</h1>
+
+<%= form_for Tweet.new do |f| %>
+  <div class="section">
+    <%= f.text_area :body %><br />
+  </div>
+  <div class="section">
+    <%= f.submit %>
+  </div>
+<% end %>
