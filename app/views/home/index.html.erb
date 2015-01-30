@@ -1,19 +1,23 @@
 <h1>Coding Tweets</h1>
 
 <%= form_for @tweet do |f| %>
-  <div class="section">
+  <div class="ch-section">
     <%= f.text_area :body %><br />
   </div>
-  <div class="section">
+  <div class="ch-section">
     <%= f.submit %>
+  </div>
+  <div id="limit" data-limit="<%= @tweet_limit %>">
+    <%= @tweet_limit %>
   </div>
 <% end %>
 
 <ul>
   <% @tweets.each do |tweet| %>
     <li>
-      <div class="tweeter"><%= tweet.user.email %></div>
-      <div class="tweet-body"><%= tweet.body %></div>
+      <div class="ch-tweeter"><%= tweet.user.email %></div>
+      <div class="ch-tweet-date"><%= time_ago_in_words tweet.created_at %> ago</div>
+      <div class="ch-tweet-body"><%= tweet.body %></div>
     </li>
   <% end %>
 </ul>
