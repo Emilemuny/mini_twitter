@@ -8,3 +8,12 @@
     <%= f.submit %>
   </div>
 <% end %>
+
+<ul>
+  <% @tweets.each do |tweet| %>
+    <li>
+      <div class="tweeter"><%= tweet.user.email %></div>
+      <div class="tweet-body"><%= tweet.body %></div>
+    </li>
+  <% end %>
+</ul>
