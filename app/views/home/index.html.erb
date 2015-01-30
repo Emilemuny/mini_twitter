@@ -16,6 +16,14 @@
   <% @tweets.each do |tweet| %>
     <li>
       <div class="ch-tweeter"><%= tweet.user.email %></div>
+      <div class="dropdown">
+        <button class="btn btn-default btn-xs dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
+          <i class="fa fa-ellipsis-v"></i>
+        </button>
+        <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+          <li role="presentation"><a role="menuitem" tabindex="-1" href="#"><i class="fa fa-trash"></i> Delete</a></li>
+        </ul>
+      </div>
       <div class="ch-tweet-date"><%= time_ago_in_words tweet.created_at %> ago</div>
       <div class="ch-tweet-body"><%= tweet.body %></div>
     </li>

@@ -18,9 +18,10 @@ li {
   border-bottom: 1px dotted $gray;
   padding-bottom: 1em;
 
-  .ch-tweet-date {
+  .dropdown, .ch-tweet-date {
     float: right;
     color: $gray;
+    padding: 0.5em;
   }
 
   .ch-tweeter {
