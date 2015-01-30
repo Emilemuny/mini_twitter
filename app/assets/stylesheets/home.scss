@@ -12,7 +12,7 @@ textarea#tweet_body {
   color: red;
 }
 
-li {
+.ch-tweet-list {
   list-style: none;
   margin: 1em auto;
   border-bottom: 1px dotted $gray;
@@ -22,6 +22,11 @@ li {
     float: right;
     color: $gray;
     padding: 0.5em;
+    min-width: 0px;
+  }
+
+  .dropdown-menu {
+    min-width: 0px;
   }
 
   .ch-tweeter {
