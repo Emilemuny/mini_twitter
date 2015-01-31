@@ -1,35 +1,39 @@
-<h1>Coding Tweets</h1>
+<h2>Coding Tweets</h2>
 
-<%= form_for @tweet do |f| %>
-  <div class="ch-section">
-    <%= f.text_area :body %><br />
-  </div>
-  <div class="ch-section">
-    <%= f.submit %>
-  </div>
-  <div id="limit" data-limit="<%= @tweet_limit %>">
-    <%= @tweet_limit %>
-  </div>
-<% end %>
+<div id="ch-tweet-form" class="clearfix well">
+  <%= form_for @tweet do |f| %>
+    <div class="ch-section">
+      <%= f.text_area :body, { class: "form-control", placeholder: "Tweet here" } %><br />
+    </div>
+    <div id="ch-tweet-button" class="ch-section">
+      <%= f.submit "Tweet", class: "btn btn-primary" %>
+    </div>
+    <div id="limit" data-limit="<%= @tweet_limit %>">
+      <%= @tweet_limit %>
+    </div>
+  <% end %>
+</div>
 
 <ul>
   <% @tweets.each do |tweet| %>
-    <li class="ch-tweet-list">
-      <div class="ch-tweeter"><%= tweet.user.email %></div>
-      <div class="dropdown own-<%= tweet.owner?(current_user.id) %>">
-        <button class="btn btn-default btn-xs dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
-          <i class="fa fa-ellipsis-v"></i>
-        </button>
-        <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
-          <li role="presentation">
-            <%= link_to "/tweets/#{tweet.id}", method: :delete do %>
+    <li class="ch-tweet-list media">
+      <div class="ch-tweeter media-left" title="<%= tweet.user.email %>"><%= image_tag tweet.user.gravatar %></div>
+      <div class="media-body">
+        <div class="dropdown own-<%= tweet.owner?(current_user.id) %>">
+          <button class="btn btn-default btn-xs dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
+            <i class="fa fa-ellipsis-v"></i>
+          </button>
+          <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+            <li role="presentation">
+              <%= link_to "/tweets/#{tweet.id}", method: :delete do %>
                 <i class="fa fa-trash"></i>
-            <% end %>
-          </li>
-        </ul>
+              <% end %>
+            </li>
+          </ul>
+        </div>
+        <div class="ch-tweet-date"><%= time_ago_in_words tweet.created_at %> ago</div>
+        <div class="ch-tweet-body"><%= tweet.body %></div>
       </div>
-      <div class="ch-tweet-date"><%= time_ago_in_words tweet.created_at %> ago</div>
-      <div class="ch-tweet-body"><%= tweet.body %></div>
     </li>
   <% end %>
 </ul>

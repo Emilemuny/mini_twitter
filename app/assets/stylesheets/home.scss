@@ -47,3 +47,19 @@ textarea#tweet_body {
     display: none;
   }
 }
+
+#ch-tweet-form {
+  padding: 1em;
+  #ch-tweet-button {
+    float: left;
+    margin: 0 0 3px 3px;
+  }
+  #limit {
+    float: right;
+    margin: 0 3px 3px 0;
+  }
+}
+
+.media-body {
+  padding-left: 1.5em;
+}
