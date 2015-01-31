@@ -8,4 +8,13 @@ class Tweet < ActiveRecord::Base
   def self.home_tweets
     all.includes(:user).order(created_at: :desc)
   end
+
+  def self.for_user(user_id)
+    where(user_id: user_id)
+  end
+
+  def owner?(passed_user_id)
+    self.user_id == passed_user_id
+  end
+
 end

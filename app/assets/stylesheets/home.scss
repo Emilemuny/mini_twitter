@@ -38,4 +38,12 @@ textarea#tweet_body {
     clear: both;
     padding-top: 1em;
   }
+
+  .dropdown-menu>li>a {
+    padding: 3px 10px;
+  }
+
+  .own-false {
+    display: none;
+  }
 }

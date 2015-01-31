@@ -16,12 +16,16 @@
   <% @tweets.each do |tweet| %>
     <li class="ch-tweet-list">
       <div class="ch-tweeter"><%= tweet.user.email %></div>
-      <div class="dropdown">
+      <div class="dropdown own-<%= tweet.owner?(current_user.id) %>">
         <button class="btn btn-default btn-xs dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
           <i class="fa fa-ellipsis-v"></i>
         </button>
         <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
-          <li role="presentation"><a role="menuitem" tabindex="-1" href="#"><i class="fa fa-trash"></i> Delete</a></li>
+          <li role="presentation">
+            <%= link_to "/tweets/#{tweet.id}", method: :delete do %>
+                <i class="fa fa-trash"></i>
+            <% end %>
+          </li>
         </ul>
       </div>
       <div class="ch-tweet-date"><%= time_ago_in_words tweet.created_at %> ago</div>
