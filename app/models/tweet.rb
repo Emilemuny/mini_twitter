@@ -6,7 +6,11 @@ class Tweet < ActiveRecord::Base
   validates :body, presence: true, length: { maximum: LIMIT }
 
   def self.home_tweets
-    all.includes(:user).order(created_at: :desc)
+    all.includes(:user).order(created_at: :desc).limit(10)
+  end
+
+  def self.more_tweets(last_seen_id)
+    where(["id < ?", last_seen_id]).includes(:user).order(created_at: :desc).limit(10)
   end
 
   def self.for_user(user_id)

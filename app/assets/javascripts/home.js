@@ -9,4 +9,11 @@ $(function(){
     limitDiv.text(diff).toggleClass("red", condition);
     button.prop("disabled", condition);
   }).trigger("keyup");
+
+  $(window).on('scroll', function(){
+    if ( $(window).scrollTop() > $(document).height() - $(window).height() ) {
+      console.log("more.....");
+    }
+  });
+
 })

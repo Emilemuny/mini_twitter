@@ -8,4 +8,10 @@ class HomeController < ApplicationController
     @tweets = Tweet.home_tweets
   end
 
+  # /more_tweets/17
+  def more_tweets
+    @tweets = Tweet.more_tweets(params[:id])
+    render layout: false
+  end
+
 end
